@@ -175,6 +175,14 @@ button:disabled{
   color:var(--success);
   margin-bottom:10px;
 }
+
+  .back-btn {
+  margin-top: 25px;
+  width: auto !important;
+  padding: 12px 35px !important;
+  font-size: 0.9rem !important;
+  display: inline-block;
+}
 </style>
 </head>
 
@@ -352,6 +360,9 @@ I confirm the information provided is correct and I commit to attending if selec
 <div class="success-icon">✔</div>
 <h1>Application Received!</h1>
 <p>Thank you for applying to the AI Bootcamp. We will review your details and reach out via email soon.</p>
+  <button type="button" class="back-btn" onclick="window.location.reload()">
+    Back to Home
+  </button>
 </div>
 
 </div>
@@ -411,4 +422,5 @@ submitBtn.disabled = false;
 
 </body>
 </html>
+
 

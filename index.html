@@ -346,6 +346,7 @@ I confirm the information provided is correct and I commit to attending if selec
 
 </div>
 
+
 <script>
 const scriptURL = 'https://script.google.com/macros/s/AKfycbw8Vsh2W-2We90CChkxbLgRjDUUCoSvyVZfjKKFfqm1Pm1YRMbt4Uqg-T7GHSoW3LYt/exec'; 
 const form = document.getElementById('mainForm');
@@ -354,51 +355,65 @@ const loader = document.getElementById('loader');
 const btnText = document.getElementById('btnText');
 
 form.addEventListener('submit', function(e){
-e.preventDefault();
+    e.preventDefault();
 
-let valid = true;
+    let valid = true;
+    let firstInvalidField = null; 
 
-form.querySelectorAll("input, select, textarea").forEach(input=>{
-if(!input.checkValidity()){
-valid=false;
-if(input.nextElementSibling && input.nextElementSibling.classList.contains("error")){
-input.nextElementSibling.style.display="block";
-}
-}else{
-if(input.nextElementSibling && input.nextElementSibling.classList.contains("error")){
-input.nextElementSibling.style.display="none";
-}
-}
-});
+    form.querySelectorAll("input, select, textarea").forEach(input => {
+        if(!input.checkValidity()){
+            valid = false;
+            
+            if (!firstInvalidField) firstInvalidField = input;
 
-const checkbox=form.querySelector('input[name="commitment"]');
-if(!checkbox.checked){
-valid=false;
-document.getElementById("checkboxError").style.display="block";
-}else{
-document.getElementById("checkboxError").style.display="none";
-}
+            if(input.nextElementSibling && input.nextElementSibling.classList.contains("error")){
+                input.nextElementSibling.style.display = "block";
+            }
+        } else {
+            if(input.nextElementSibling && input.nextElementSibling.classList.contains("error")){
+                input.nextElementSibling.style.display = "none";
+            }
+        }
+    });
 
-if(!valid) return;
+    const checkbox = form.querySelector('input[name="commitment"]');
+    if(!checkbox.checked){
+        valid = false;
+        document.getElementById("checkboxError").style.display = "block";
+        if (!firstInvalidField) firstInvalidField = checkbox;
+    } else {
+        document.getElementById("checkboxError").style.display = "none";
+    }
 
-btnText.style.display = 'none';
-loader.style.display = 'block';
-submitBtn.disabled = true;
+    if(!valid) {
+        if (firstInvalidField) {
+            firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            firstInvalidField.focus(); 
+        }
+        return;
+    }
 
-fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-.then(response => {
-document.getElementById('formBody').style.display = 'none';
-document.getElementById('success').style.display = 'block';
-})
-.catch(error => {
-alert('Something went wrong. Please try again.');
-btnText.style.display = 'block';
-loader.style.display = 'none';
-submitBtn.disabled = false;
-});
+    btnText.style.display = 'none';
+    loader.style.display = 'block';
+    submitBtn.disabled = true;
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response => {
+        document.getElementById('formBody').style.display = 'none';
+        document.getElementById('success').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    })
+    .catch(error => {
+        alert('Something went wrong. Please try again.');
+        btnText.style.display = 'block';
+        loader.style.display = 'none';
+        submitBtn.disabled = false;
+    });
 });
 </script>
+
 
 </body>
 
 </html>
+

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TSI Free AI Bootcamp Application</title>
+<title>Free AI Bootcamp Application</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -23,7 +23,7 @@
 body{
   margin:0;
   font-family:'Plus Jakarta Sans',sans-serif;
-  background:radial-gradient(circle at top right,#1e1b4b,#0b0f1a);
+  background:white;
   color:#fff;
   padding:40px 15px;
 }
@@ -54,7 +54,7 @@ h1{
 }
 
 .description{
-  color:#cbd5e1;
+  color:#000000; 
   margin-bottom:40px;
   border-bottom:1px solid var(--border);
   padding-bottom:25px;
@@ -78,7 +78,7 @@ label{
   display:block;
   font-size:0.85rem;
   margin-bottom:8px;
-  color:#e2e8f0;
+  color:#000000; 
 }
 
 input,select,textarea{
@@ -112,6 +112,10 @@ input:focus,select:focus,textarea:focus{
   padding:14px;
   background:rgba(255,255,255,0.05);
   border-radius:12px;
+}
+
+.radio-option span {
+  color: #000000; 
 }
 
 button{
@@ -173,7 +177,6 @@ button:disabled{
 
 <div id="formBody">
 <h1>Techsavanna Software Institute</h1>
-
 <h1>Free AI Bootcamp</h1>
 <p class="description">Apply to join our free in-person AI bootcamp. Build chatbots and smart AI applications through hands-on projects.</p>
 
@@ -346,7 +349,6 @@ I confirm the information provided is correct and I commit to attending if selec
 
 </div>
 
-
 <script>
 const scriptURL = 'https://script.google.com/macros/s/AKfycbw8Vsh2W-2We90CChkxbLgRjDUUCoSvyVZfjKKFfqm1Pm1YRMbt4Uqg-T7GHSoW3LYt/exec'; 
 const form = document.getElementById('mainForm');
@@ -355,65 +357,50 @@ const loader = document.getElementById('loader');
 const btnText = document.getElementById('btnText');
 
 form.addEventListener('submit', function(e){
-    e.preventDefault();
+e.preventDefault();
 
-    let valid = true;
-    let firstInvalidField = null; 
+let valid = true;
 
-    form.querySelectorAll("input, select, textarea").forEach(input => {
-        if(!input.checkValidity()){
-            valid = false;
-            
-            if (!firstInvalidField) firstInvalidField = input;
+form.querySelectorAll("input, select, textarea").forEach(input=>{
+if(!input.checkValidity()){
+valid=false;
+if(input.nextElementSibling && input.nextElementSibling.classList.contains("error")){
+input.nextElementSibling.style.display="block";
+}
+}else{
+if(input.nextElementSibling && input.nextElementSibling.classList.contains("error")){
+input.nextElementSibling.style.display="none";
+}
+}
+});
 
-            if(input.nextElementSibling && input.nextElementSibling.classList.contains("error")){
-                input.nextElementSibling.style.display = "block";
-            }
-        } else {
-            if(input.nextElementSibling && input.nextElementSibling.classList.contains("error")){
-                input.nextElementSibling.style.display = "none";
-            }
-        }
-    });
+const checkbox=form.querySelector('input[name="commitment"]');
+if(!checkbox.checked){
+valid=false;
+document.getElementById("checkboxError").style.display="block";
+}else{
+document.getElementById("checkboxError").style.display="none";
+}
 
-    const checkbox = form.querySelector('input[name="commitment"]');
-    if(!checkbox.checked){
-        valid = false;
-        document.getElementById("checkboxError").style.display = "block";
-        if (!firstInvalidField) firstInvalidField = checkbox;
-    } else {
-        document.getElementById("checkboxError").style.display = "none";
-    }
+if(!valid) return;
 
-    if(!valid) {
-        if (firstInvalidField) {
-            firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            firstInvalidField.focus(); 
-        }
-        return;
-    }
+btnText.style.display = 'none';
+loader.style.display = 'block';
+submitBtn.disabled = true;
 
-    btnText.style.display = 'none';
-    loader.style.display = 'block';
-    submitBtn.disabled = true;
-
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-    .then(response => {
-        document.getElementById('formBody').style.display = 'none';
-        document.getElementById('success').style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    })
-    .catch(error => {
-        alert('Something went wrong. Please try again.');
-        btnText.style.display = 'block';
-        loader.style.display = 'none';
-        submitBtn.disabled = false;
-    });
+fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+.then(response => {
+document.getElementById('formBody').style.display = 'none';
+document.getElementById('success').style.display = 'block';
+})
+.catch(error => {
+alert('Something went wrong. Please try again.');
+btnText.style.display = 'block';
+loader.style.display = 'none';
+submitBtn.disabled = false;
+});
 });
 </script>
 
-
 </body>
-
 </html>
-

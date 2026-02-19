@@ -383,17 +383,15 @@ I confirm the information provided is correct and I commit to attending if selec
 
 </div>
 
+
 <script>
 
 const APPLICATION_OPEN = true; 
 
-
-const form = document.getElementById('applicationForm');
-const successScreen = document.getElementById('successScreen');
+const form = document.getElementById('mainForm');
+const successScreen = document.getElementById('success');
 const formBody = document.getElementById('formBody');
 const checkbox = document.getElementById('confirmCheck');
-
-
 
 window.addEventListener('DOMContentLoaded', function(){
 
@@ -404,11 +402,8 @@ window.addEventListener('DOMContentLoaded', function(){
 
 });
 
-
-
 form.addEventListener('submit', function(e){
 
- 
   if(!APPLICATION_OPEN){
     e.preventDefault();
     return;
@@ -417,7 +412,7 @@ form.addEventListener('submit', function(e){
   let valid = true;
 
   if(!checkbox.checked){
-    valid = false;   
+    valid = false;
     alert("Please confirm the information is correct.");
   }
 
@@ -426,14 +421,11 @@ form.addEventListener('submit', function(e){
     return;
   }
 
-
   e.preventDefault();
   formBody.style.display = 'none';
   successScreen.style.display = 'block';
 
 });
-
-
 
 function goBack(){
   successScreen.style.display = 'none';
@@ -442,12 +434,7 @@ function goBack(){
 
 </script>
 
+
 </body>
 </html>
-
-
-
-
-
-
 

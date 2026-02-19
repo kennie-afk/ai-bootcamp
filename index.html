@@ -155,6 +155,13 @@ button:disabled{
   font-size: 0.9rem !important;
   display: inline-block;
 }
+#formError{
+  display:none;
+  color: var(--danger);
+  text-align:center;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
 </style>
 </head>
 <body>
@@ -163,6 +170,8 @@ button:disabled{
 <h1>Techsavanna Software Institute</h1>
 <h1>Free AI Bootcamp</h1>
 <p class="description">Apply to join our free in-person AI bootcamp. Build chatbots and smart AI applications through hands-on projects.</p>
+
+<div id="formError"></div>
 
 <form id="mainForm" novalidate>
 <section>
@@ -324,6 +333,7 @@ const successScreen = document.getElementById('success');
 const formBody = document.getElementById('formBody');
 const checkbox = document.getElementById('confirmCheck');
 const loader = document.getElementById('loader');
+const formError = document.getElementById('formError');
 window.addEventListener('DOMContentLoaded', function(){
   if(!APPLICATION_OPEN){
     formBody.style.display = 'none';
@@ -332,13 +342,22 @@ window.addEventListener('DOMContentLoaded', function(){
 });
 form.addEventListener('submit', function(e){
   e.preventDefault();
-  if(!APPLICATION_OPEN) return;
-  if(!checkbox.checked){ alert("Please confirm the information is correct."); return; }
+  formError.style.display = 'none';
+  if(!APPLICATION_OPEN){
+    formError.style.display='block';
+    formError.textContent='Applications are currently closed.';
+    return;
+  }
+  if(!checkbox.checked){
+    formError.style.display='block';
+    formError.textContent='You must confirm that the information is correct before submitting.';
+    return;
+  }
   loader.style.display='inline-block';
   const formData = new FormData(form);
-  fetch('https://script.google.com/macros/s/AKfycbw8Vsh2W-2We90CChkxbLgRjDUUCoSvyVZfjKKFfqm1Pm1YRMbt4Uqg-T7GHSoW3LYt/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbw8Vsh2W-2We90CChkxbLgRjDUUCoSvyVZfjKKFfqm1Pm1YRMbt4Uqg-T7GHSoW3LYt/exec',{
     method:'POST',
-    body: formData
+    body:formData
   })
   .then(res=>res.text())
   .then(data=>{
@@ -347,12 +366,14 @@ form.addEventListener('submit', function(e){
       formBody.style.display='none';
       successScreen.style.display='block';
     } else {
-      alert("Error submitting form. Try again.");
+      formError.style.display='block';
+      formError.textContent='Error submitting form. Try again.';
     }
   })
   .catch(err=>{
     loader.style.display='none';
-    alert("Error submitting form. Try again.");
+    formError.style.display='block';
+    formError.textContent='Error submitting form. Try again.';
   });
 });
 </script>

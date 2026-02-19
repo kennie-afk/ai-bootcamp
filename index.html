@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free AI Bootcamp Application</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <style>
 :root{
   --primary:#7c3aed;
@@ -17,9 +15,7 @@
   --glass:rgba(255,255,255,0.06);
   --border:rgba(255,255,255,0.12);
 }
-
 *{box-sizing:border-box}
-
 body{
   margin:0;
   font-family:'Plus Jakarta Sans',sans-serif;
@@ -27,7 +23,6 @@ body{
   color:#fff;
   padding:40px 15px;
 }
-
 .container{
   max-width:800px;
   margin:auto;
@@ -39,12 +34,10 @@ body{
   box-shadow:0 30px 70px rgba(0,0,0,0.6);
   animation:fadeIn 0.8s ease;
 }
-
 @keyframes fadeIn{
   from{opacity:0;transform:translateY(25px)}
   to{opacity:1;transform:translateY(0)}
 }
-
 h1{
   font-size:2.6rem;
   margin-bottom:12px;
@@ -52,16 +45,13 @@ h1{
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-
 .description{
   color:#000000; 
   margin-bottom:40px;
   border-bottom:1px solid var(--border);
   padding-bottom:25px;
 }
-
 section{margin-bottom:40px}
-
 h3{
   font-size:0.85rem;
   text-transform:uppercase;
@@ -69,18 +59,15 @@ h3{
   color:#a78bfa;
   margin-bottom:20px;
 }
-
 .form-group{
   margin-bottom:22px;
 }
-
 label{
   display:block;
   font-size:0.85rem;
   margin-bottom:8px;
   color:#000000; 
 }
-
 input,select,textarea{
   width:100%;
   padding:15px;
@@ -91,20 +78,17 @@ input,select,textarea{
   font-size:0.95rem;
   transition:0.3s;
 }
-
 input:focus,select:focus,textarea:focus{
   outline:none;
   border-color:var(--primary);
   background:rgba(0,0,0,0.65);
 }
-
 .error{
   font-size:0.75rem;
   color:var(--danger);
   margin-top:6px;
   display:none;
 }
-
 .radio-option{
   display:flex;
   align-items:center;
@@ -113,11 +97,7 @@ input:focus,select:focus,textarea:focus{
   background:rgba(255,255,255,0.05);
   border-radius:12px;
 }
-
-.radio-option span {
-  color: #000000; 
-}
-
+.radio-option span { color: #000000; }
 button{
   width:100%;
   padding:18px;
@@ -130,17 +110,14 @@ button{
   cursor:pointer;
   transition:0.3s;
 }
-
 button:hover{
   transform:translateY(-3px);
   box-shadow:0 12px 30px rgba(124,58,237,0.5);
 }
-
 button:disabled{
   opacity:0.6;
   cursor:not-allowed;
 }
-
 .loader{
   display:none;
   border:3px solid #fff;
@@ -151,32 +128,27 @@ button:disabled{
   margin:auto;
   animation:spin 1s linear infinite;
 }
-
 @keyframes spin{
   0%{transform:rotate(0deg)}
   100%{transform:rotate(360deg)}
 }
-
 #success{
   display:none;
   text-align:center;
   animation:fadeIn 0.6s ease;
   padding: 20px 0;
 }
-
 #success p {
   color: #cbd5e1;
   font-size: 1.1rem;
   line-height: 1.6;
 }
-
 .success-icon{
   font-size:3rem;
   color:var(--success);
   margin-bottom:10px;
 }
-
-  .back-btn {
+.back-btn {
   margin-top: 25px;
   width: auto !important;
   padding: 12px 35px !important;
@@ -185,39 +157,30 @@ button:disabled{
 }
 </style>
 </head>
-
 <body>
-
 <div class="container">
-
 <div id="formBody">
 <h1>Techsavanna Software Institute</h1>
 <h1>Free AI Bootcamp</h1>
 <p class="description">Apply to join our free in-person AI bootcamp. Build chatbots and smart AI applications through hands-on projects.</p>
-
 <form id="mainForm" novalidate>
-
 <section>
 <h3>Section 1: Personal Information</h3>
-
 <div class="form-group">
 <label>Full Name *</label>
 <input type="text" name="fullName" required minlength="3">
 <div class="error">Minimum 3 characters required</div>
 </div>
-
 <div class="form-group">
 <label>Phone Number *</label>
 <input type="tel" name="phone" required pattern="^[0-9+\- ]{8,15}$">
 <div class="error">Enter valid phone number (8–15 digits)</div>
 </div>
-
 <div class="form-group">
 <label>Email Address *</label>
 <input type="email" name="email" required>
 <div class="error">Enter valid email address</div>
 </div>
-
 <div class="form-group">
 <label>Gender (Optional)</label>
 <select name="gender">
@@ -227,23 +190,19 @@ button:disabled{
 <option>Prefer not to say</option>
 </select>
 </div>
-
 <div class="form-group">
 <label>Town / Location *</label>
 <input type="text" name="location" required>
 <div class="error">Location required</div>
 </div>
 </section>
-
 <section>
 <h3>Section 2: Education</h3>
-
 <div class="form-group">
 <label>School/University Name *</label>
 <input type="text" name="school" required>
 <div class="error">School name required</div>
 </div>
-
 <div class="form-group">
 <label>Current Level of Study *</label>
 <select name="studyLevel" required>
@@ -256,16 +215,13 @@ button:disabled{
 </select>
 <div class="error">Please select level</div>
 </div>
-
 <div class="form-group">
 <label>Course or Subjects</label>
 <input type="text" name="course">
 </div>
 </section>
-
 <section>
 <h3>Section 3: Tech Experience</h3>
-
 <div class="form-group">
 <label>Experience Level *</label>
 <select name="experienceLevel" required>
@@ -277,36 +233,29 @@ button:disabled{
 </select>
 <div class="error">Please select experience level</div>
 </div>
-
 <div class="form-group">
 <label>AI tools you've used</label>
 <input type="text" name="aiTools">
 </div>
-
 <div class="form-group">
 <label>Programming languages/tools you know</label>
 <input type="text" name="techStack">
 </div>
 </section>
-
 <section>
 <h3>Section 4: Motivation</h3>
-
 <div class="form-group">
 <label>Why do you want to join? *</label>
 <textarea name="whyJoin" rows="4" required minlength="20"></textarea>
 <div class="error">Minimum 20 characters required</div>
 </div>
-
 <div class="form-group">
 <label>What do you hope to build or learn?</label>
 <textarea name="goals" rows="3"></textarea>
 </div>
 </section>
-
 <section>
 <h3>Section 5: Commitment</h3>
-
 <div class="form-group">
 <label>Can you attend in-person? *</label>
 <select name="availability" required>
@@ -317,7 +266,6 @@ button:disabled{
 </select>
 <div class="error">Please select availability</div>
 </div>
-
 <div class="form-group">
 <label>Access to a laptop? *</label>
 <select name="laptop" required>
@@ -329,7 +277,6 @@ button:disabled{
 <div class="error">Please select laptop access</div>
 </div>
 </section>
-
 <section>
 <h3>Section 6: Emergency Contact</h3>
 <div class="form-group">
@@ -337,104 +284,56 @@ button:disabled{
 <input type="text" name="emergency">
 </div>
 </section>
-
 <section>
 <div class="radio-option">
-<input type="checkbox" name="commitment" value="Confirmed" required>
+<input type="checkbox" id="confirmCheck" name="commitment" value="Confirmed" required>
 <span style="font-size:0.85rem;">
 I confirm the information provided is correct and I commit to attending if selected.
 </span>
 </div>
 <div class="error" id="checkboxError">You must confirm before submitting</div>
 </section>
-
 <button type="submit" id="submitBtn">
 <span id="btnText">Submit Application</span>
 <div class="loader" id="loader"></div>
 </button>
-
 </form>
 </div>
-
 <div id="success">
 <div class="success-icon">✔</div>
 <h1>Application Received!</h1>
 <p>Thank you for applying to the AI Bootcamp. We will review your details and reach out via email soon.</p>
-  <button type="button" class="back-btn" onclick="window.location.reload()">
-    Back to Home
-  </button>
+<button type="button" class="back-btn" onclick="window.location.reload()">Back to Home</button>
 </div>
-
 <div id="closedMessage" style="display:none; text-align:center; padding:30px 0; color:#000;">
-  <div class="success-icon"></div>
-  <h1>Applications Closed !</h1>
-  <p>
-    Maximum number of applications for this AI Bootcamp reached.
-  </p>
-  <p>
-    Thank you for your interest. Please follow us for future opportunities.
-  </p>
-
-  <button type="button" class="back-btn" onclick="window.location.reload()">
-    Back
-  </button>
+<div class="success-icon"></div>
+<h1>Applications Closed !</h1>
+<p>Maximum number of applications for this AI Bootcamp reached.</p>
+<p>Thank you for your interest. Please follow us for future opportunities.</p>
+<button type="button" class="back-btn" onclick="window.location.reload()">Back</button>
 </div>
-
-
 </div>
-
-
 <script>
-
-const APPLICATION_OPEN = true; 
-
+const APPLICATION_OPEN = true;
 const form = document.getElementById('mainForm');
 const successScreen = document.getElementById('success');
 const formBody = document.getElementById('formBody');
 const checkbox = document.getElementById('confirmCheck');
-
 window.addEventListener('DOMContentLoaded', function(){
-
   if(!APPLICATION_OPEN){
-    document.getElementById('formBody').style.display = 'none';
+    formBody.style.display = 'none';
     document.getElementById('closedMessage').style.display = 'block';
   }
-
 });
-
 form.addEventListener('submit', function(e){
-
-  if(!APPLICATION_OPEN){
-    e.preventDefault();
-    return;
-  }
-
+  if(!APPLICATION_OPEN){ e.preventDefault(); return; }
   let valid = true;
-
-  if(!checkbox.checked){
-    valid = false;
-    alert("Please confirm the information is correct.");
-  }
-
-  if(!valid){
-    e.preventDefault();
-    return;
-  }
-
+  if(!checkbox.checked){ valid=false; alert("Please confirm the information is correct."); }
+  if(!valid){ e.preventDefault(); return; }
   e.preventDefault();
   formBody.style.display = 'none';
   successScreen.style.display = 'block';
-
 });
-
-function goBack(){
-  successScreen.style.display = 'none';
-  formBody.style.display = 'block';
-}
-
 </script>
-
-
 </body>
 </html>
-

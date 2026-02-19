@@ -163,6 +163,7 @@ button:disabled{
 <h1>Techsavanna Software Institute</h1>
 <h1>Free AI Bootcamp</h1>
 <p class="description">Apply to join our free in-person AI bootcamp. Build chatbots and smart AI applications through hands-on projects.</p>
+
 <form id="mainForm" novalidate>
 <section>
 <h3>Section 1: Personal Information</h3>
@@ -299,12 +300,14 @@ I confirm the information provided is correct and I commit to attending if selec
 </button>
 </form>
 </div>
+
 <div id="success">
 <div class="success-icon">✔</div>
 <h1>Application Received!</h1>
 <p>Thank you for applying to the AI Bootcamp. We will review your details and reach out via email soon.</p>
 <button type="button" class="back-btn" onclick="window.location.reload()">Back to Home</button>
 </div>
+
 <div id="closedMessage" style="display:none; text-align:center; padding:30px 0; color:#000;">
 <div class="success-icon"></div>
 <h1>Applications Closed !</h1>
@@ -313,12 +316,14 @@ I confirm the information provided is correct and I commit to attending if selec
 <button type="button" class="back-btn" onclick="window.location.reload()">Back</button>
 </div>
 </div>
+
 <script>
 const APPLICATION_OPEN = true;
 const form = document.getElementById('mainForm');
 const successScreen = document.getElementById('success');
 const formBody = document.getElementById('formBody');
 const checkbox = document.getElementById('confirmCheck');
+const loader = document.getElementById('loader');
 window.addEventListener('DOMContentLoaded', function(){
   if(!APPLICATION_OPEN){
     formBody.style.display = 'none';
@@ -326,13 +331,29 @@ window.addEventListener('DOMContentLoaded', function(){
   }
 });
 form.addEventListener('submit', function(e){
-  if(!APPLICATION_OPEN){ e.preventDefault(); return; }
-  let valid = true;
-  if(!checkbox.checked){ valid=false; alert("Please confirm the information is correct."); }
-  if(!valid){ e.preventDefault(); return; }
   e.preventDefault();
-  formBody.style.display = 'none';
-  successScreen.style.display = 'block';
+  if(!APPLICATION_OPEN) return;
+  if(!checkbox.checked){ alert("Please confirm the information is correct."); return; }
+  loader.style.display='inline-block';
+  const formData = new FormData(form);
+  fetch('https://script.google.com/macros/s/AKfycbw8Vsh2W-2We90CChkxbLgRjDUUCoSvyVZfjKKFfqm1Pm1YRMbt4Uqg-T7GHSoW3LYt/exec', {
+    method:'POST',
+    body: formData
+  })
+  .then(res=>res.text())
+  .then(data=>{
+    loader.style.display='none';
+    if(data==='Success'){
+      formBody.style.display='none';
+      successScreen.style.display='block';
+    } else {
+      alert("Error submitting form. Try again.");
+    }
+  })
+  .catch(err=>{
+    loader.style.display='none';
+    alert("Error submitting form. Try again.");
+  });
 });
 </script>
 </body>

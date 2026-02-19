@@ -384,79 +384,67 @@ I confirm the information provided is correct and I commit to attending if selec
 </div>
 
 <script>
-const APPLICATION_OPEN = false;
-const scriptURL = 'https://script.google.com/macros/s/AKfycbw8Vsh2W-2We90CChkxbLgRjDUUCoSvyVZfjKKFfqm1Pm1YRMbt4Uqg-T7GHSoW3LYt/exec'; 
-const form = document.getElementById('mainForm');
-const submitBtn = document.getElementById('submitBtn');
-const loader = document.getElementById('loader');
-const btnText = document.getElementById('btnText');
+
+const APPLICATION_OPEN = true; 
+
+
+const form = document.getElementById('applicationForm');
+const successScreen = document.getElementById('successScreen');
+const formBody = document.getElementById('formBody');
+const checkbox = document.getElementById('confirmCheck');
+
+
+
+window.addEventListener('DOMContentLoaded', function(){
+
+  if(!APPLICATION_OPEN){
+    document.getElementById('formBody').style.display = 'none';
+    document.getElementById('closedMessage').style.display = 'block';
+  }
+
+});
+
+
 
 form.addEventListener('submit', function(e){
 
-if(!APPLICATION_OPEN){
-  e.preventDefault();
-
-  document.getElementById('formBody').style.display = 'none';
-  document.getElementById('closedMessage').style.display = 'block';
-
-  return;
-}
-
-
-
-  
-e.preventDefault();
-
-let valid = true;
-
-form.querySelectorAll("input, select, textarea").forEach(input=>{
-if(!input.checkValidity()){
-valid=false;
-if(input.nextElementSibling && input.nextElementSibling.classList.contains("error")){
-input.nextElementSibling.style.display="block";
-}
-}else{
-if(input.nextElementSibling && input.nextElementSibling.classList.contains("error")){
-input.nextElementSibling.style.display="none";
-}
-}
-});
-
-const checkbox=form.querySelector('input[name="commitment"]');
-if(!checkbox.checked){
-valid=true;
-document.getElementById("checkboxError").style.display="block";
-}else{
-document.getElementById("checkboxError").style.display="none";
-}
-
-if(!valid) return;
-
-btnText.style.display = 'none';
-loader.style.display = 'block';
-submitBtn.disabled = true;
-
-fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-.then(response => {
-document.getElementById('formBody').style.display = 'none';
-document.getElementById('success').style.display = 'block';
-})
-.catch(error => {
-alert('Something went wrong. Please try again.');
-btnText.style.display = 'block';
-loader.style.display = 'none';
-submitBtn.disabled = false;
-});
-});
-
+ 
   if(!APPLICATION_OPEN){
-  document.getElementById('formBody').style.display = 'none';
-  document.getElementById('closedMessage').style.display = 'block';
+    e.preventDefault();
+    return;
+  }
+
+  let valid = true;
+
+  if(!checkbox.checked){
+    valid = false;   
+    alert("Please confirm the information is correct.");
+  }
+
+  if(!valid){
+    e.preventDefault();
+    return;
+  }
+
+
+  e.preventDefault();
+  formBody.style.display = 'none';
+  successScreen.style.display = 'block';
+
+});
+
+
+
+function goBack(){
+  successScreen.style.display = 'none';
+  formBody.style.display = 'block';
 }
+
 </script>
 
 </body>
 </html>
+
 
 
 

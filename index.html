@@ -424,7 +424,7 @@ input.nextElementSibling.style.display="none";
 
 const checkbox=form.querySelector('input[name="commitment"]');
 if(!checkbox.checked){
-valid=false;
+valid=true;
 document.getElementById("checkboxError").style.display="block";
 }else{
 document.getElementById("checkboxError").style.display="none";
@@ -457,6 +457,7 @@ submitBtn.disabled = false;
 
 </body>
 </html>
+
 
 
 

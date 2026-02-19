@@ -155,13 +155,6 @@ button:disabled{
   font-size: 0.9rem !important;
   display: inline-block;
 }
-#formError{
-  display:none;
-  color: var(--danger);
-  text-align:center;
-  margin-bottom: 20px;
-  font-size: 0.95rem;
-}
 </style>
 </head>
 <body>
@@ -170,8 +163,6 @@ button:disabled{
 <h1>Techsavanna Software Institute</h1>
 <h1>Free AI Bootcamp</h1>
 <p class="description">Apply to join our free in-person AI bootcamp. Build chatbots and smart AI applications through hands-on projects.</p>
-
-<div id="formError"></div>
 
 <form id="mainForm" novalidate>
 <section>
@@ -317,15 +308,6 @@ I confirm the information provided is correct and I commit to attending if selec
 <button type="button" class="back-btn" onclick="window.location.reload()">Back to Home</button>
 </div>
 
-<div id="closedMessage" style="display:none; text-align:center; padding:30px 0; color:#000;">
-<div class="success-icon"></div>
-<h1>Applications Closed !</h1>
-<p>Maximum number of applications for this AI Bootcamp reached.</p>
-<p>Thank you for your interest. Please follow us for future opportunities.</p>
-<button type="button" class="back-btn" onclick="window.location.reload()">Back</button>
-</div>
-</div>
-
 <script>
 const APPLICATION_OPEN = true;
 const form = document.getElementById('mainForm');
@@ -333,26 +315,34 @@ const successScreen = document.getElementById('success');
 const formBody = document.getElementById('formBody');
 const checkbox = document.getElementById('confirmCheck');
 const loader = document.getElementById('loader');
-const formError = document.getElementById('formError');
-window.addEventListener('DOMContentLoaded', function(){
-  if(!APPLICATION_OPEN){
-    formBody.style.display = 'none';
-    document.getElementById('closedMessage').style.display = 'block';
+
+function validateField(field){
+  const errorDiv = field.parentElement.querySelector('.error');
+  if(field.checkValidity()){
+    errorDiv.style.display='none';
+    return true;
+  } else {
+    errorDiv.style.display='block';
+    return false;
   }
-});
+}
+
 form.addEventListener('submit', function(e){
   e.preventDefault();
-  formError.style.display = 'none';
-  if(!APPLICATION_OPEN){
-    formError.style.display='block';
-    formError.textContent='Applications are currently closed.';
-    return;
-  }
+  let valid=true;
+  const fields = form.querySelectorAll('input, select, textarea');
+  fields.forEach(f=>{
+    if(f.required){
+      if(!validateField(f)) valid=false;
+    }
+  });
   if(!checkbox.checked){
-    formError.style.display='block';
-    formError.textContent='You must confirm that the information is correct before submitting.';
-    return;
+    document.getElementById('checkboxError').style.display='block';
+    valid=false;
+  } else {
+    document.getElementById('checkboxError').style.display='none';
   }
+  if(!valid) return;
   loader.style.display='inline-block';
   const formData = new FormData(form);
   fetch('https://script.google.com/macros/s/AKfycbw8Vsh2W-2We90CChkxbLgRjDUUCoSvyVZfjKKFfqm1Pm1YRMbt4Uqg-T7GHSoW3LYt/exec',{
@@ -366,14 +356,12 @@ form.addEventListener('submit', function(e){
       formBody.style.display='none';
       successScreen.style.display='block';
     } else {
-      formError.style.display='block';
-      formError.textContent='Error submitting form. Try again.';
+      alert('Error submitting form. Try again.');
     }
   })
   .catch(err=>{
     loader.style.display='none';
-    formError.style.display='block';
-    formError.textContent='Error submitting form. Try again.';
+    alert('Error submitting form. Try again.');
   });
 });
 </script>

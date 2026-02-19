@@ -365,9 +365,26 @@ I confirm the information provided is correct and I commit to attending if selec
   </button>
 </div>
 
+  <div id="closedMessage" style="display:none; text-align:center; padding:30px 0;">
+  <div class="success-icon"></div>
+  <h1>Applications Closed</h1>
+  <p>
+    We have reached the maximum number of applications for this AI Bootcamp.
+  </p>
+  <p>
+    Thank you for your interest. Please follow us for future opportunities.
+  </p>
+
+  <button type="button" class="back-btn" onclick="window.location.reload()">
+    Back
+  </button>
+</div>
+
+
 </div>
 
 <script>
+const APPLICATION_OPEN = false;
 const scriptURL = 'https://script.google.com/macros/s/AKfycbw8Vsh2W-2We90CChkxbLgRjDUUCoSvyVZfjKKFfqm1Pm1YRMbt4Uqg-T7GHSoW3LYt/exec'; 
 const form = document.getElementById('mainForm');
 const submitBtn = document.getElementById('submitBtn');
@@ -375,6 +392,19 @@ const loader = document.getElementById('loader');
 const btnText = document.getElementById('btnText');
 
 form.addEventListener('submit', function(e){
+
+if(!APPLICATION_OPEN){
+  e.preventDefault();
+
+  document.getElementById('formBody').style.display = 'none';
+  document.getElementById('closedMessage').style.display = 'block';
+
+  return;
+}
+
+
+
+  
 e.preventDefault();
 
 let valid = true;
@@ -418,9 +448,15 @@ loader.style.display = 'none';
 submitBtn.disabled = false;
 });
 });
+
+  if(!APPLICATION_OPEN){
+  document.getElementById('formBody').style.display = 'none';
+  document.getElementById('closedMessage').style.display = 'block';
+}
 </script>
 
 </body>
 </html>
+
 
 

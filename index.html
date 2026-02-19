@@ -7,154 +7,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --primary:#7c3aed;
-  --secondary:#4f46e5;
-  --success:#22c55e;
-  --danger:#ef4444;
-  --bg:#0b0f1a;
-  --glass:rgba(255,255,255,0.06);
-  --border:rgba(255,255,255,0.12);
+  --primary:#7c3aed; --secondary:#4f46e5; --success:#22c55e; --danger:#ef4444;
+  --bg:#0b0f1a; --glass:rgba(255,255,255,0.06); --border:rgba(255,255,255,0.12);
 }
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  background:white;
-  color:#fff;
-  padding:40px 15px;
-}
-.container{
-  max-width:800px;
-  margin:auto;
-  padding:50px;
-  border-radius:28px;
-  background:var(--glass);
-  backdrop-filter:blur(25px);
-  border:1px solid var(--border);
-  box-shadow:0 30px 70px rgba(0,0,0,0.6);
-  animation:fadeIn 0.8s ease;
-}
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(25px)}
-  to{opacity:1;transform:translateY(0)}
-}
-h1{
-  font-size:2.6rem;
-  margin-bottom:12px;
-  background:linear-gradient(90deg,#a78bfa,#c084fc);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-.description{
-  color:#000000; 
-  margin-bottom:40px;
-  border-bottom:1px solid var(--border);
-  padding-bottom:25px;
-}
-section{margin-bottom:40px}
-h3{
-  font-size:0.85rem;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  color:#a78bfa;
-  margin-bottom:20px;
-}
-.form-group{
-  margin-bottom:22px;
-}
-label{
-  display:block;
-  font-size:0.85rem;
-  margin-bottom:8px;
-  color:#000000; 
-}
-input,select,textarea{
-  width:100%;
-  padding:15px;
-  border-radius:14px;
-  border:1px solid var(--border);
-  background:rgba(0,0,0,0.45);
-  color:#fff;
-  font-size:0.95rem;
-  transition:0.3s;
-}
-input:focus,select:focus,textarea:focus{
-  outline:none;
-  border-color:var(--primary);
-  background:rgba(0,0,0,0.65);
-}
-.error{
-  font-size:0.75rem;
-  color:var(--danger);
-  margin-top:6px;
-  display:none;
-}
-.radio-option{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:14px;
-  background:rgba(255,255,255,0.05);
-  border-radius:12px;
-}
-.radio-option span { color: #000000; }
-button{
-  width:100%;
-  padding:18px;
-  border:none;
-  border-radius:16px;
-  font-size:1.05rem;
-  font-weight:700;
-  background:linear-gradient(90deg,var(--primary),var(--secondary));
-  color:white;
-  cursor:pointer;
-  transition:0.3s;
-}
-button:hover{
-  transform:translateY(-3px);
-  box-shadow:0 12px 30px rgba(124,58,237,0.5);
-}
-button:disabled{
-  opacity:0.6;
-  cursor:not-allowed;
-}
-.loader{
-  display:none;
-  border:3px solid #fff;
-  border-top:3px solid transparent;
-  border-radius:50%;
-  width:22px;
-  height:22px;
-  margin:auto;
-  animation:spin 1s linear infinite;
-}
-@keyframes spin{
-  0%{transform:rotate(0deg)}
-  100%{transform:rotate(360deg)}
-}
-#success{
-  display:none;
-  text-align:center;
-  animation:fadeIn 0.6s ease;
-  padding: 20px 0;
-}
-#success p {
-  color: #cbd5e1;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-.success-icon{
-  font-size:3rem;
-  color:var(--success);
-  margin-bottom:10px;
-}
-.back-btn {
-  margin-top: 25px;
-  width: auto !important;
-  padding: 12px 35px !important;
-  font-size: 0.9rem !important;
-  display: inline-block;
-}
+*{box-sizing:border-box;}
+body{margin:0; font-family:'Plus Jakarta Sans',sans-serif; background:white; color:#fff; padding:40px 15px;}
+.container{max-width:800px; margin:auto; padding:50px; border-radius:28px; background:var(--glass); backdrop-filter:blur(25px); border:1px solid var(--border); box-shadow:0 30px 70px rgba(0,0,0,0.6);}
+h1{font-size:2.6rem; margin-bottom:12px; background:linear-gradient(90deg,#a78bfa,#c084fc); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+.description{color:#000; margin-bottom:40px; border-bottom:1px solid var(--border); padding-bottom:25px;}
+section{margin-bottom:40px;}
+h3{font-size:0.85rem; text-transform:uppercase; letter-spacing:2px; color:#a78bfa; margin-bottom:20px;}
+.form-group{margin-bottom:22px;}
+label{display:block; font-size:0.85rem; margin-bottom:8px; color:#000;}
+input,select,textarea{width:100%; padding:15px; border-radius:14px; border:1px solid var(--border); background:rgba(0,0,0,0.45); color:#fff; font-size:0.95rem; transition:0.3s;}
+input:focus,select:focus,textarea:focus{outline:none; border-color:var(--primary); background:rgba(0,0,0,0.65);}
+.error{font-size:0.75rem; color:var(--danger); margin-top:6px; display:none;}
+.radio-option{display:flex; align-items:center; gap:12px; padding:14px; background:rgba(255,255,255,0.05); border-radius:12px;}
+.radio-option span{color:#000;}
+button{width:100%; padding:18px; border:none; border-radius:16px; font-size:1.05rem; font-weight:700; background:linear-gradient(90deg,var(--primary),var(--secondary)); color:white; cursor:pointer; transition:0.3s;}
+button:hover:not(:disabled){transform:translateY(-3px); box-shadow:0 12px 30px rgba(124,58,237,0.5);}
+button:disabled{opacity:0.6; cursor:not-allowed;}
+.loader{display:none; border:3px solid #fff; border-top:3px solid transparent; border-radius:50%; width:22px; height:22px; margin:auto; animation:spin 1s linear infinite;}
+@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+#success{display:none; text-align:center; padding:20px 0;}
+#success p{color:#cbd5e1; font-size:1.1rem; line-height:1.6;}
+.success-icon{font-size:3rem; color:var(--success); margin-bottom:10px;}
+.back-btn{margin-top:25px; width:auto !important; padding:12px 35px !important; font-size:0.9rem !important; display:inline-block;}
 </style>
 </head>
 <body>
@@ -166,203 +44,90 @@ button:disabled{
 
 <form id="mainForm" novalidate>
 <section>
-<h3>Section 1: Personal Information</h3>
-<div class="form-group">
-<label>Full Name *</label>
-<input type="text" name="fullName" required minlength="3">
-<div class="error">Minimum 3 characters required</div>
-</div>
-<div class="form-group">
-<label>Phone Number *</label>
-<input type="tel" name="phone" required pattern="^[0-9+\- ]{8,15}$">
-<div class="error">Enter valid phone number (8–15 digits)</div>
-</div>
-<div class="form-group">
-<label>Email Address *</label>
-<input type="email" name="email" required>
-<div class="error">Enter valid email address</div>
-</div>
-<div class="form-group">
-<label>Gender (Optional)</label>
-<select name="gender">
-<option value="">Select gender</option>
-<option>Male</option>
-<option>Female</option>
-<option>Prefer not to say</option>
-</select>
-</div>
-<div class="form-group">
-<label>Town / Location *</label>
-<input type="text" name="location" required>
-<div class="error">Location required</div>
-</div>
+<h3>Personal Info</h3>
+<div class="form-group"><label>Full Name *</label><input type="text" name="fullName" required minlength="3"><div class="error">Minimum 3 characters required</div></div>
+<div class="form-group"><label>Phone *</label><input type="tel" name="phone" required pattern="^[0-9+\- ]{8,15}$"><div class="error">Enter valid phone number (8–15 digits)</div></div>
+<div class="form-group"><label>Email *</label><input type="email" name="email" required><div class="error">Enter valid email</div></div>
+<div class="form-group"><label>Location *</label><input type="text" name="location" required><div class="error">Location required</div></div>
 </section>
 <section>
-<h3>Section 2: Education</h3>
-<div class="form-group">
-<label>School/University Name *</label>
-<input type="text" name="school" required>
-<div class="error">School name required</div>
-</div>
-<div class="form-group">
-<label>Current Level of Study *</label>
-<select name="studyLevel" required>
-<option value="">Select level</option>
-<option>High School</option>
-<option>College</option>
-<option>University</option>
-<option>Graduate</option>
-<option>Other</option>
-</select>
-<div class="error">Please select level</div>
-</div>
-<div class="form-group">
-<label>Course or Subjects</label>
-<input type="text" name="course">
-</div>
+<h3>Education</h3>
+<div class="form-group"><label>School/University *</label><input type="text" name="school" required><div class="error">School required</div></div>
+<div class="form-group"><label>Level *</label><select name="studyLevel" required><option value="">Select level</option><option>High School</option><option>College</option><option>University</option><option>Graduate</option><option>Other</option></select><div class="error">Select level</div></div>
+<div class="form-group"><label>Course/Subjects</label><input type="text" name="course"></div>
 </section>
 <section>
-<h3>Section 3: Tech Experience</h3>
-<div class="form-group">
-<label>Experience Level *</label>
-<select name="experienceLevel" required>
-<option value="">Select experience</option>
-<option>Beginner (no experience)</option>
-<option>Basic computer skills</option>
-<option>Some programming experience</option>
-<option>Advanced</option>
-</select>
-<div class="error">Please select experience level</div>
-</div>
-<div class="form-group">
-<label>AI tools you've used</label>
-<input type="text" name="aiTools">
-</div>
-<div class="form-group">
-<label>Programming languages/tools you know</label>
-<input type="text" name="techStack">
-</div>
+<h3>Tech Experience</h3>
+<div class="form-group"><label>Experience Level *</label><select name="experienceLevel" required><option value="">Select</option><option>Beginner</option><option>Basic</option><option>Some programming</option><option>Advanced</option></select><div class="error">Select experience</div></div>
+<div class="form-group"><label>AI tools used</label><input type="text" name="aiTools"></div>
+<div class="form-group"><label>Tech Stack</label><input type="text" name="techStack"></div>
 </section>
 <section>
-<h3>Section 4: Motivation</h3>
-<div class="form-group">
-<label>Why do you want to join? *</label>
-<textarea name="whyJoin" rows="4" required minlength="20"></textarea>
-<div class="error">Minimum 20 characters required</div>
-</div>
-<div class="form-group">
-<label>What do you hope to build or learn?</label>
-<textarea name="goals" rows="3"></textarea>
-</div>
+<h3>Motivation</h3>
+<div class="form-group"><label>Why join? *</label><textarea name="whyJoin" required minlength="20"></textarea><div class="error">Minimum 20 characters</div></div>
+<div class="form-group"><label>Goals</label><textarea name="goals"></textarea></div>
 </section>
 <section>
-<h3>Section 5: Commitment</h3>
-<div class="form-group">
-<label>Can you attend in-person? *</label>
-<select name="availability" required>
-<option value="">Select option</option>
-<option>Yes, fully available</option>
-<option>Partially available</option>
-<option>Not sure</option>
-</select>
-<div class="error">Please select availability</div>
-</div>
-<div class="form-group">
-<label>Access to a laptop? *</label>
-<select name="laptop" required>
-<option value="">Select option</option>
-<option>Yes</option>
-<option>No</option>
-<option>Sometimes</option>
-</select>
-<div class="error">Please select laptop access</div>
-</div>
+<h3>Commitment</h3>
+<div class="form-group"><label>Availability *</label><select name="availability" required><option value="">Select</option><option>Yes, fully available</option><option>Partially available</option><option>Not sure</option></select><div class="error">Select availability</div></div>
+<div class="form-group"><label>Laptop Access *</label><select name="laptop" required><option value="">Select</option><option>Yes</option><option>No</option><option>Sometimes</option></select><div class="error">Select laptop access</div></div>
 </section>
 <section>
-<h3>Section 6: Emergency Contact</h3>
-<div class="form-group">
-<label>Emergency Contact Name & Phone</label>
-<input type="text" name="emergency">
-</div>
+<h3>Emergency Contact</h3>
+<div class="form-group"><label>Emergency Contact</label><input type="text" name="emergency"></div>
 </section>
 <section>
-<div class="radio-option">
-<input type="checkbox" id="confirmCheck" name="commitment" value="Confirmed" required>
-<span style="font-size:0.85rem;">
-I confirm the information provided is correct and I commit to attending if selected.
-</span>
-</div>
+<div class="radio-option"><input type="checkbox" id="confirmCheck" name="commitment" value="Confirmed" required><span>I confirm info is correct.</span></div>
 <div class="error" id="checkboxError">You must confirm before submitting</div>
 </section>
-<button type="submit" id="submitBtn">
-<span id="btnText">Submit Application</span>
-<div class="loader" id="loader"></div>
-</button>
+<button type="submit" id="submitBtn" disabled><span id="btnText">Submit Application</span><div class="loader" id="loader"></div></button>
 </form>
 </div>
 
-<div id="success">
-<div class="success-icon">✔</div>
-<h1>Application Received!</h1>
-<p>Thank you for applying to the AI Bootcamp. We will review your details and reach out via email soon.</p>
-<button type="button" class="back-btn" onclick="window.location.reload()">Back to Home</button>
-</div>
+<div id="success"><div class="success-icon">✔</div><h1>Application Received!</h1><p>Thank you for applying. We will contact you soon.</p><button class="back-btn" onclick="window.location.reload()">Back</button></div>
 
 <script>
-const APPLICATION_OPEN = true;
 const form = document.getElementById('mainForm');
+const submitBtn = document.getElementById('submitBtn');
 const successScreen = document.getElementById('success');
-const formBody = document.getElementById('formBody');
-const checkbox = document.getElementById('confirmCheck');
 const loader = document.getElementById('loader');
+const checkbox = document.getElementById('confirmCheck');
 
-function validateField(field){
-  const errorDiv = field.parentElement.querySelector('.error');
-  if(field.checkValidity()){
-    errorDiv.style.display='none';
-    return true;
-  } else {
-    errorDiv.style.display='block';
-    return false;
-  }
+function showError(input){input.parentElement.querySelector('.error').style.display='block';}
+function hideError(input){input.parentElement.querySelector('.error').style.display='none';}
+function validateInput(input){
+  if(input.type==='checkbox') return input.checked;
+  if(input.type==='select-one' || input.tagName==='SELECT'){if(!input.value){showError(input); return false;} hideError(input); return true;}
+  if(!input.checkValidity()){showError(input); return false;} hideError(input); return true;
 }
 
-form.addEventListener('submit', function(e){
-  e.preventDefault();
+function validateForm(){
   let valid=true;
-  const fields = form.querySelectorAll('input, select, textarea');
-  fields.forEach(f=>{
-    if(f.required){
-      if(!validateField(f)) valid=false;
-    }
-  });
-  if(!checkbox.checked){
-    document.getElementById('checkboxError').style.display='block';
-    valid=false;
-  } else {
-    document.getElementById('checkboxError').style.display='none';
-  }
-  if(!valid) return;
+  form.querySelectorAll('input,select,textarea').forEach(f=>{if(f.required&&!validateInput(f)) valid=false;});
+  if(!checkbox.checked){document.getElementById('checkboxError').style.display='block'; valid=false;} else document.getElementById('checkboxError').style.display='none';
+  submitBtn.disabled=!valid;
+  return valid;
+}
+
+form.querySelectorAll('input,select,textarea').forEach(f=>{
+  f.addEventListener('input',()=>{validateInput(f); validateForm();});
+  f.addEventListener('change',()=>{validateInput(f); validateForm();});
+});
+
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  if(!validateForm()) return;
   loader.style.display='inline-block';
-  const formData = new FormData(form);
-  fetch('https://script.google.com/macros/s/AKfycbw8Vsh2W-2We90CChkxbLgRjDUUCoSvyVZfjKKFfqm1Pm1YRMbt4Uqg-T7GHSoW3LYt/exec',{
-    method:'POST',
-    body:formData
-  })
+  submitBtn.disabled=true;
+  const formData=new FormData(form);
+  fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec',{method:'POST',body:formData})
   .then(res=>res.text())
   .then(data=>{
     loader.style.display='none';
-    if(data==='Success'){
-      formBody.style.display='none';
-      successScreen.style.display='block';
-    } else {
-      alert('Error submitting form. Try again.');
-    }
+    if(data==='Success'){form.style.display='none'; successScreen.style.display='block';} 
+    else submitBtn.disabled=false;
   })
-  .catch(err=>{
-    loader.style.display='none';
-    alert('Error submitting form. Try again.');
-  });
+  .catch(err=>{loader.style.display='none'; submitBtn.disabled=false;});
 });
 </script>
 </body>

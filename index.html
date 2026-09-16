@@ -8,16 +8,16 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 <style>
 :root{
-  --primary:#7c3aed; --secondary:#4f46e5; --success:#22c55e; --danger:#ef4444;
-  --bg:#0b0f1a; --glass:rgba(255,255,255,0.06); --border:rgba(255,255,255,0.12);
+  --primary:#1c77c3; --secondary:#135084; --success:#22c55e; --danger:#ed3237; --gold:#febf02;
+  --bg:#0b0f1a; --glass:rgba(28,119,195,0.05); --border:rgba(28,119,195,0.15);
 }
 *{box-sizing:border-box;}
 body{margin:0; font-family:'Plus Jakarta Sans',sans-serif; background:white; color:#fff; padding:40px 15px;}
 .container{max-width:800px; margin:auto; padding:50px; border-radius:28px; background:var(--glass); backdrop-filter:blur(25px); border:1px solid var(--border); box-shadow:0 30px 70px rgba(0,0,0,0.6);}
-h1{font-size:2.6rem; margin-bottom:12px; background:linear-gradient(90deg,#a78bfa,#c084fc); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+h1{font-size:2.6rem; margin-bottom:12px; background:linear-gradient(90deg,var(--primary),#4a9fe0); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
 .description{color:#000; margin-bottom:40px; border-bottom:1px solid var(--border); padding-bottom:25px;}
 section{margin-bottom:40px;}
-h3{font-size:0.85rem; text-transform:uppercase; letter-spacing:2px; color:#a78bfa; margin-bottom:20px;}
+h3{font-size:0.85rem; text-transform:uppercase; letter-spacing:2px; color:var(--primary); margin-bottom:20px; border-bottom:2px solid var(--gold); display:inline-block; padding-bottom:6px;}
 .form-group{margin-bottom:22px;}
 label{display:block; font-size:0.85rem; margin-bottom:8px; color:#000;}
 input,select,textarea{width:100%; padding:15px; border-radius:14px; border:1px solid var(--border); background:rgba(0,0,0,0.45); color:#fff; font-size:0.95rem; transition:0.3s;}
@@ -26,7 +26,7 @@ input:focus,select:focus,textarea:focus{outline:none; border-color:var(--primary
 .radio-option{display:flex; align-items:center; gap:12px; padding:14px; background:rgba(255,255,255,0.05); border-radius:12px;}
 .radio-option span{color:#000;}
 button{width:100%; padding:18px; border:none; border-radius:16px; font-size:1.05rem; font-weight:700; background:linear-gradient(90deg,var(--primary),var(--secondary)); color:white; cursor:pointer; transition:0.3s;}
-button:hover:not(:disabled){transform:translateY(-3px); box-shadow:0 12px 30px rgba(124,58,237,0.5);}
+button:hover:not(:disabled){transform:translateY(-3px); box-shadow:0 12px 30px rgba(28,119,195,0.5);}
 button:disabled{opacity:0.6; cursor:not-allowed;}
 .loader{display:none; border:3px solid #fff; border-top:3px solid transparent; border-radius:50%; width:22px; height:22px; margin:auto; animation:spin 1s linear infinite;}
 @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}

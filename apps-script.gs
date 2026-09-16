@@ -54,13 +54,13 @@ function doPost(e) {
 function sendApplicantConfirmation(data) {
   if (!data.email) return;
 
-  var subject = 'Your application to the Solid Works Bootcamp';
+  var subject = 'Your application to the SOLID Works Bootcamp';
   var html = ''
     + '<div style="font-family:Arial,Helvetica,sans-serif; max-width:560px; margin:0 auto; color:#1a1a1a;">'
     + '<img src="' + LOGO_URL + '" alt="' + INSTITUTE_NAME + '" style="max-width:200px; height:auto; margin-bottom:24px;">'
     + '<h2 style="color:#4f46e5; margin-bottom:4px;">Application Received</h2>'
     + '<p>Hi ' + escapeHtml(data.fullName || 'there') + ',</p>'
-    + '<p>Thank you for applying to the Solid Works Bootcamp at ' + INSTITUTE_NAME + '. '
+    + '<p>Thank you for applying to the SOLID Works Bootcamp at ' + INSTITUTE_NAME + '. '
     + 'We have received your application and it is now under review.</p>'
     + '<table style="width:100%; border-collapse:collapse; margin:20px 0; font-size:14px;">'
     + summaryRow('Full Name', data.fullName)
@@ -91,7 +91,7 @@ function sendAdminNotification(data, sheetUrl) {
   var html = ''
     + '<div style="font-family:Arial,Helvetica,sans-serif; max-width:560px; margin:0 auto; color:#1a1a1a;">'
     + '<h2 style="color:#4f46e5;">New Enrolment Received</h2>'
-    + '<p>A new application was submitted to the Solid Works Bootcamp.</p>'
+    + '<p>A new application was submitted to the SOLID Works Bootcamp.</p>'
     + '<table style="width:100%; border-collapse:collapse; margin:20px 0; font-size:14px;">'
     + summaryRow('Full Name', data.fullName)
     + summaryRow('Phone', data.phone)

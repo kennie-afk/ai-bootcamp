@@ -6,6 +6,7 @@
 <title>SOLID Works Bootcamp Application</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://unpkg.com/qrcodejs@1.0.0/qrcode.min.js"></script>
 <style>
 :root{
   --primary:#1c77c3; --secondary:#135084; --success:#22c55e; --danger:#ed3237; --gold:#febf02;
@@ -40,6 +41,13 @@ button:disabled{opacity:0.6; cursor:not-allowed;}
 .info-row{display:flex; align-items:center; gap:12px; margin-bottom:14px; color:#000;}
 .info-row:last-child{margin-bottom:0;}
 .info-row i{width:22px; height:22px; flex-shrink:0; color:var(--primary);}
+.qr-box{margin-bottom:30px; padding:20px 25px; border-radius:16px; background:#f4f7fb; border:1px solid var(--border); display:flex; align-items:center; gap:20px; flex-wrap:wrap;}
+.qr-box #qrCanvas{border-radius:10px; flex-shrink:0; line-height:0;}
+.qr-box .qr-text{color:#000;}
+.qr-box .qr-text strong{display:block; font-size:0.95rem; margin-bottom:4px;}
+.qr-box .qr-text span{font-size:0.8rem; color:#4b5563;}
+.qr-box .qr-download{display:inline-block; margin-top:8px; font-size:0.8rem; color:var(--primary); text-decoration:none; font-weight:600;}
+.qr-box .qr-download:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
@@ -50,6 +58,11 @@ button:disabled{opacity:0.6; cursor:not-allowed;}
 </div>
 <h1>SolidWorks 3D CAD Bootcamp</h1>
 <p class="description">Apply to join our SolidWorks 3D CAD modeling and mechanical design bootcamp.</p>
+
+<div class="qr-box">
+  <div id="qrCanvas"></div>
+  <div class="qr-text"><strong>Scan to apply on your phone</strong><span>Point your camera at the code to open this form</span><br><a class="qr-download" href="qr-solidworks-bootcamp.png" download="solidworks-bootcamp-qr.png">Download QR code for flyers/posters</a></div>
+</div>
 
 <form id="mainForm" novalidate>
 <section>
@@ -115,6 +128,15 @@ button:disabled{opacity:0.6; cursor:not-allowed;}
 
 <script>
 lucide.createIcons();
+
+try{
+  new QRCode(document.getElementById('qrCanvas'), {
+    text:'https://tsi-software-engineering-bootcamp-delta.vercel.app/',
+    width:120, height:120,
+    colorDark:'#135084', colorLight:'#ffffff',
+    correctLevel:QRCode.CorrectLevel.M
+  });
+}catch(e){ document.querySelector('.qr-box').style.display='none'; }
 
 const form = document.getElementById('mainForm');
 const submitBtn = document.getElementById('submitBtn');
